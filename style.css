@@ -4,3 +4,6 @@
  Author Url: https://hackerforlife.io
  Text Domain: " Hello World  "
 */
+.nav_box {
+  display: flex;
+}
