@@ -44,10 +44,11 @@
 
     /* This is for Id specific sub-menu styles */
     .nav_container {
+        padding-top: 1em;
         width: 100%;
-        background: #000;
-        margin: 0;
-        height: 20vh;
+        background: #fff9f3;
+        margin: 1em 0;
+        height: 10vh;
     }
 
     .nav_box {
@@ -60,18 +61,17 @@
     .sub-menu {
         margin: 0;
         padding: 0;
-        background: red;
+        background: #fff9f3;
     }
 
     .sub-menu>li {
-        padding-top: 1em;
         width: 200px;
 
     }
 
 
     li>a {
-        color: #fff;
+        color: #0d2f1f;
         list-style: none;
         text-decoration: none;
     }
@@ -85,7 +85,7 @@
     .sub-menu>li:hover {
         color: blue;
         cursor: pointer;
-        background: blue;
+        background: #888888;
     }
 
     ul li ul {
