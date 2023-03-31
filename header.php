@@ -16,39 +16,23 @@
    'menu_class' => 'nav_box', 'container' => 'nav','container_class' => 'nav_container')
 );
     
-   ?>
+?>
 
 
     <style>
-    a {
-        display: block;
-        width: 185px;
-        padding: 1em;
-    }
-
-    /* This is for Id specific sub-menu styles */
-
-    li>.sub-menu {
-        left: 0;
-        border-radius: 10px;
-    }
-
-
-
-
-    .sub-menu .sub-menu {
+    body {
+        margin: 0;
         padding: 0;
-        left: 200px;
-        top: 0;
     }
 
-    /* This is for Id specific sub-menu styles */
+
     .nav_container {
         padding-top: 1em;
         width: 100%;
         background: #fff9f3;
         margin: 1em 0;
         height: 10vh;
+        color: #0d2f1f;
     }
 
     .nav_box {
@@ -58,35 +42,29 @@
         padding: 0 15em;
     }
 
-    .sub-menu {
-        margin: 0;
-        padding: 0;
-        background: #fff9f3;
+    a {
+        display: block;
+        width: 185px;
+        padding: 0.6em;
     }
-
-    .sub-menu>li {
-        width: 200px;
-
-    }
-
 
     li>a {
         color: #0d2f1f;
         list-style: none;
         text-decoration: none;
+        transition: all cubic-bezier(0.4, 0, 0.2, 1)0.4s;
+        transform-origin: 50% -50px;
+        transition-property: transform, opacity, visablity, -webkit-transform;
+        transition-duration: 1.5s;
+
     }
 
     li {
         position: relative;
         display: block;
-        transition-duration: 0.5s;
+        transition-duration: 1.5s;
     }
 
-    .sub-menu>li:hover {
-        color: blue;
-        cursor: pointer;
-        background: #888888;
-    }
 
     ul li ul {
         visibility: hidden;
@@ -96,6 +74,9 @@
         margin-top: 1em;
         left: 30%;
         display: none;
+        transition: all cubic-bezier(0.4, 0, 0.2, 1)12s;
+        transform-origin: 50% -50px;
+        transition-property: transform, opacity, visablity, -webkit-transform;
     }
 
 
@@ -106,15 +87,56 @@
         visibility: visible;
         opacity: 1;
         display: block;
+        transition: all 0.5s ease;
+    }
+
+    .nav_box li>ul {
+
+        transition: all cubic-bezier(0.4, 0, 0.2, 1)0.4s;
+        transform-origin: 50% -50px;
+        transition-property: transform, opacity, visablity, -webkit-transform;
+        transform: perspective(300px)rotateX(-3deg);
+        opacity: 0;
+        visibility: hidden;
     }
 
 
+    /* This is for Id specific sub-menu styles */
 
+    li>.sub-menu {
+        left: 0;
+        border-radius: 7px;
+    }
 
-    body {
+    .sub-menu .sub-menu {
+        padding: 0;
+        left: 200px;
+        top: 0;
+        box-shadow: 0 20px 32px -8px rgb(0 0 0 / 15%), 0 0 1px rgb(0 0 0 / 5%);
+        transition: all cubic-bezier(0.4, 0, 0.2, 1)0.4s;
+        transform-origin: 50% -50px;
+        transition-property: transform, opacity, visablity, -webkit-transform;
+
+    }
+
+    .sub-menu {
         margin: 0;
         padding: 0;
+        background: #fff;
+
     }
+
+    .sub-menu>li {
+        width: 200px;
+
+    }
+
+    .sub-menu>li:hover {
+        cursor: pointer;
+        background: #88888814;
+    }
+
+    /* This is for Id specific sub-menu styles */
     </style>
     </header>
 
