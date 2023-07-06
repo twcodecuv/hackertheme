@@ -10,42 +10,97 @@
 </head>
 <body>
 
-    <?php 
-   
-   wp_nav_menu(array('theme_location'  => 'second_menu', 
-   'menu_class' => 'nav_box', 'container' => 'nav','container_class' => 'nav_container')
-);
-    
-?>
+    <header id="main-head">
+        <?php if( function_exists('the_custom_logo')) { ?>
+        <div class="container-logo">
+            <?php the_custom_logo(); ?>
+        </div>
+        <?php } ?>
+
+        <?php wp_nav_menu( array (
+                'theme_location'  => 'second_menu', 
+                'menu_class' => 'nav-box', 
+                'container' => 'nav',
+                'container_class' => 'nav-container'
+            )); ?>
+
+
+        <div id="site-navigation" class="mobile-navigation" role="navigation">
+            <button class="nav-menu"> Menu</button>
+            <div class=" wrapper-nav ">
+                <?php wp_nav_menu (array('theme_location' => 'second_menu',
+                'menu_class' => 'nav_menu', 'container' => 'nav' , 'container_class' => 'mobile-nav') ); ?>
+            </div>
+        </div>
+
+        <div class=" box ">
+
+            <?php  the_field('home_sub_heading');?>
+
+        </div>
+
+    </header>
 
 
     <style>
+    #main-head {
+        background: #fff;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+
+
+
+    .container-logo img {
+        padding-top: 1em;
+        width: 150px;
+        height: 100px;
+    }
+
     body {
         margin: 0;
         padding: 0;
     }
 
+    .second-nav {
+        display: flex;
+        width: auto;
+        height: auto;
+        padding: 1em 4em 1em 4em;
+        background: #000;
+    }
 
-    .nav_container {
-        padding-top: 1em;
-        width: 100%;
+
+    /* This is for the logo */
+
+
+
+    /* This is for the logo */
+
+
+    .nav-container {
+        padding-top: 0.4em;
+        width: auto;
         background: #fff9f3;
         margin: 1em 0;
-        height: 10vh;
+        height: 6vh;
         color: #0d2f1f;
     }
 
-    .nav_box {
+    .nav-box {
         display: flex;
         justify-content: space-between;
         list-style: none;
         padding: 0 15em;
     }
 
-    a {
+    .nav-container .sub-menu a {
         display: block;
         width: 185px;
         padding: 0.6em;
+        content: " + ";
+
     }
 
     li>a {
@@ -59,14 +114,22 @@
 
     }
 
-    li {
+    .nav-container li>a::after {
+        content: "+";
+        padding-left: 0.5em;
+    }
+
+    .nav-container li {
         position: relative;
         display: block;
         transition-duration: 1.5s;
+        padding: 1em;
+
     }
 
 
-    ul li ul {
+
+    .nav-container ul li ul {
         visibility: hidden;
         opacity: 0;
         position: absolute;
@@ -80,7 +143,7 @@
     }
 
 
-    ul li:hover>ul,
+    .nav-container ul li:hover>ul,
     ul li:focus-within>ul,
     ul li ul:hover {
 
@@ -90,7 +153,7 @@
         transition: all 0.5s ease;
     }
 
-    .nav_box li>ul {
+    .nav-box li>ul {
 
         transition: all cubic-bezier(0.4, 0, 0.2, 1)0.4s;
         transform-origin: 50% -50px;
@@ -137,6 +200,76 @@
     }
 
     /* This is for Id specific sub-menu styles */
+
+
+    /* Resposive Styles  */
+
+    @media screen and (max-width:1246px) and (min-width: 600px) {
+
+
+
+        .nav-container ul li:hover>ul {
+            position: relative;
+        }
+
+        .nav-container ul li ul,
+        ul li ul,
+        ul li ul {
+            position: initial;
+            visibility: visible;
+            display: block;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        #main-head {
+            display: block;
+            height: auto;
+        }
+
+        .nav-container {
+            display: block;
+            width: auto;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-box {
+            display: block;
+            padding: 0;
+
+        }
+
+        .second-nav {
+            display: block;
+            width: auto;
+            height: auto;
+            padding: 4em;
+        }
+
+        .sub-menu {
+            display: block;
+            position: fixed;
+            left: 0;
+        }
+
+        .sub-menu .sub-menu {
+            left: 15px;
+            padding: 0;
+
+        }
+
+        .nav-container ul li ul {
+            position: absolute;
+            left: 0;
+        }
+
+    }
+
+
+    /* Resposive Styles  */
     </style>
     </header>
 
