@@ -114,8 +114,8 @@ body {
 
 .title-box {
     display: block;
-    width: 50%;
-    text-align: left;
+    width: 100%;
+    text-align: center;
     max-width: 875px;
     margin: 0 auto;
     padding-bottom: 65px;
@@ -124,7 +124,6 @@ body {
 .title-box h1 {
     font-size: 50px;
     margin: 0;
-    padding-left: 10px;
 }
 
 .title-box img {
@@ -276,26 +275,21 @@ td:last-of-type {
 
 }
 </style>
-
-<?php $backgroundImg = wp_get_attachment_image_url (get_post_thumbnail_id($post->ID), 'full'); ?>
-
-<section id="banner_container" style=" background: url('<?php echo $backgroundImg;?>') no-repeat;">
+<?php get_template_part('template-parts/banner-parts/banner' , 'part') ?>
 
 
 
-    <h1 class="entry-title"><?php the_title(); ?></h1>
-    </header>
-    </div>
 
-    <div class="bg_img"></div>
-    <div class="title-box">
+</header>
+</div>
 
-        <?php the_title( '<h1>', '</h1>' ); ?>
+<!-- This is the banner Part  -->
 
-    </div>
+
+<!-- Title Box Part  -->
+<?php get_template_part('template-parts/banner-parts/title' , 'box') ?>
 </section>
 
-<?php get_template_part( 'template-parts/header', 'example' ); ?>
 
 <div class="date-section container">
     <h2><?php the_time( 'j F Y'  ); ?></h2>
@@ -306,76 +300,12 @@ td:last-of-type {
 <!-- Page Content -->
 <section class="container page">
     <!-- ASX  TABLE -->
-    <div id="asx">
-        <table class="company-listing">
-            <tbody>
-                <tr>
-                    <th rowspan="3">UK, London <?php the_time( 'j F Y'  ); ?>
-                    </th>
-                    <td>ASX:</td>
-                    <td>CUV</td>
-                </tr>
-                <tr>
-                    <td>Level 1 ADR:</td>
-                    <td>CLVLY</td>
-                </tr>
-                <tr>
-                    <td>XETRA-DAX</td>
-                    <td>RU9</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <?php get_template_part( 'template-parts/asx-part/asx', 'meta' ); ?>
+
     <!-- ASX TABLE -->
 
     <!-- Two Collumn Section -->
-    <section class="content">
-        <div class="col">
-            <?php
-        // Start the loop.
-        while ( have_posts() ) : the_post();
- 
-            /*
-             * Include the post format-specific template for the content. If you want to
-             * use this in a child theme, then include a file called called content-___.php
-             * (where ___ is the post format) and that will be used instead.
-            */
-           /* get_template_part( 'content', get_post_format() );*/
-
-           the_content();
- 
-   
- 
-            the_post_navigation( array(
-                'next_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Next', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="screen-reader-text">' . __( 'Next post:', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="post-title">%title</span>',
-                'prev_text' => '<span class="meta-nav" aria-hidden="true">' . __( 'Previous', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="screen-reader-text">' . __( 'Previous post:', 'twentyfifteen' ) . '</span> ' .
-                    '<span class="post-title">%title</span>',
-            ) );
- 
-        // End the loop.
-        endwhile;
-        ?>
-            <button class="btn">Download The PDF</button>
-        </div>
-        <div class="col">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt a
-                error rerum perferendis fugiat facilis! Hic harum consequatur sit!
-                Doloribus repellendus possimus maiores impedit! Delectus sit eius
-                laborum. Ab, quaerat. Lorem ipsum, dolor sit amet consectetur
-                adipisicing elit. Nobis amet, soluta sed, doloribus dicta porro est
-                expedita labore veritatis numquam nihil ipsa quam aliquam in maiores
-                accusamus minus architecto sint! Lorem ipsum dolor sit, amet
-                consectetur adipisicing elit. Architecto ullam soluta cumque earum
-                sint, inventore, aspernatur tempore magnam saepe voluptatibus,
-                eligendi alias enim provident. Officia, voluptates? Libero ratione
-                praesentium vero.
-            </p>
-        </div>
-    </section>
+    <?php get_template_part('template-parts/content-part/content' , 'part') ?>
     <!-- Two Collumn Section -->
 
     <!-- footer -->
